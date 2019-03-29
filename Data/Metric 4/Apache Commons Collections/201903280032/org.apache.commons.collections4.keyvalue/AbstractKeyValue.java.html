@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>AbstractKeyValue.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Licensed to the Apache Software Foundation (ASF) under one or more</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * contributor license agreements.  See the NOTICE file distributed with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * this work for additional information regarding copyright ownership.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * The ASF licenses this file to You under the Apache License, Version 2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * (the &#34;License&#34;); you may not use this file except in compliance with</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * the License.  You may obtain a copy of the License at</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *      http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Unless required by applicable law or agreed to in writing, software</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * See the License for the specific language governing permissions and</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * limitations under the License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.apache.commons.collections4.keyvalue;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.apache.commons.collections4.KeyValue;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Abstract pair class to assist with creating &#60;code&#62;KeyValue&#60;/code&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * and {@link java.util.Map.Entry Map.Entry} implementations.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @since 3.0</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public abstract class AbstractKeyValue&#60;K, V&#62; implements KeyValue&#60;K, V&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The key */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private K key;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /** The value */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private V value;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a new pair with the specified key and given value.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param key  the key for the entry, may be null</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param value  the value for the entry, may be null</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected AbstractKeyValue(final K key, final V value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        super();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.key = key;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.value = value;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Gets the key from the pair.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the key</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public K getKey() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_53'/>
+53
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_53'>1</a>
+<span>
+
+1. getKey : mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::getKey to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return key;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected K setKey(final K key) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final K old = this.key;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.key = key;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_59'/>
+59
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_59'>1</a>
+<span>
+
+1. setKey : mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::setKey to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return old;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Gets the value from the pair.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return the value</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public V getValue() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_69'/>
+69
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_69'>1</a>
+<span>
+
+1. getValue : mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::getValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return value;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected V setValue(final V value) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        final V old = this.value;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.value = value;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_75'/>
+75
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_75'>1</a>
+<span>
+
+1. setValue : mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::setValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return old;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Gets a debugging String view of the pair.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @return a String view of the entry</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String toString() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_85'/>
+85
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_85'>1</a>
+<span>
+
+1. toString : mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::toString to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new StringBuilder()</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            .append(getKey())</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            .append(&#39;=&#39;)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            .append(getValue())</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            .toString();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_90'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1640bb4c_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_92'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1640bb4c_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_53'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKey<br/><b>Killed by : </b>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testToString(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest)</span></span> mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::getKey to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1640bb4c_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_59'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setKey<br/><b>Killed by : </b>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testAccessorsAndMutators(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest)</span></span> mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::setKey to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1640bb4c_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_69'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getValue<br/><b>Killed by : </b>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testToString(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest)</span></span> mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::getValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1640bb4c_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_75'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setValue<br/><b>Killed by : </b>org.apache.commons.collections4.keyvalue.DefaultMapEntryTest.testAccessorsAndMutators(org.apache.commons.collections4.keyvalue.DefaultMapEntryTest)</span></span> mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::setValue to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1640bb4c_85'>85</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1640bb4c_85'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testToString(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest)</span></span> mutated return of Object value for org/apache/commons/collections4/keyvalue/AbstractKeyValue::toString to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ksh_DE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[qu_EC](org.apache.commons.collections4.MapUtilsTest) (75 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_DE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[km](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kea_CV](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kea](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sbp_TZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_DG](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_WS](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[teo_KE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hu_HU](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ca_FR](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[as](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[az_AZ_#Latn](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kn_IN](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kk](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kn](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_RE](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testEntrySetContains3(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yo_BJ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rwk_TZ](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testEntrySetRemoveAll(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_BQ](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_PA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rof](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MY](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mua_CM](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ro_RO](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_TO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ca_IT](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zgh_MA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hi](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[et_EE](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_BZ](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_AO](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[naq_NA](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[os_GE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_001](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mgo_CM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GI](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mua](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_DZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru_MD](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[guz](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_CN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sl_SI](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_150](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dua](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dz](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ff_SN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GG](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[qu](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nn](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_DE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_BF](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kkj](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[smn](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mas_TZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MW](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ga_IE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ks](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapIsEmpty(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (2 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_DM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[az](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[no](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sw_CD](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_001](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_ZW](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_RS_#Latn](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bn_IN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yue_CN_#Hans](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bs_BA_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uk](org.apache.commons.collections4.MapUtilsTest) (66 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ebu_KE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_DK](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ha_GH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_MO_#Hans](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[am](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sq_XK](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_TW_#Hant](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_KM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[az__#Latn](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vai](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gv_IM](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_MO_#Hant](org.apache.commons.collections4.MapUtilsTest) (66 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_TT](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GB](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CY](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ko_KP](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rof_TZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_AE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kl](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_TL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ln_AO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hr](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.map.PredicatedSortedMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.PredicatedSortedMapTest) (0 ms)</li><li>org.apache.commons.collections4.map.CompositeMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.CompositeMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_TZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ff_CM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[asa_TZ](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CX](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bm_ML](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[guz_KE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ta_MY](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest.testToString(org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kln_KE](org.apache.commons.collections4.MapUtilsTest) (78 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_BO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[da_DK](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kw](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_PH](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_BL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_MZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_PW](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sq_AL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testToString(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cs_CZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MS](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ur_PK](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_TC](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GD](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[khq](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_JE](org.apache.commons.collections4.MapUtilsTest) (77 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[wo_SN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hu](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pa__#Guru](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[so_SO](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_BE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vai__#Vaii](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NL](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ce_RU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dav](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[se_FI](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ur](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[khq_ML](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_RS_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hr_BA](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kk_KZ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tzm_MA](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cgg_UG](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[da_GL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_EG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[be](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kok](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vun_TZ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mas](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapContainsValue(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kkj_CM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[to](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testEntrySetIteratorRemoveChangesMap(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ee](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_CR](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testEqualsAndHashCode(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MH](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kl_GL](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_KW](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_EH](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[agq](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ko_KR](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_PE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_BI](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_BA_#Latn](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_ME_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_KM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[in_ID](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[jmc](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ug](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_RW](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ki](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NA](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_BJ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yav](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ak](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lt_LT](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[teo_UG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.PredicatedMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.PredicatedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MT](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_PR](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lb](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_GW](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SX](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_AW](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr__#Latn](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yav_CM](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ckb_IQ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lrc_IQ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ff_MR](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_BH](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_UG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[shi__#Latn](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gsw_FR](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_TD](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[haw_US](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vai_LR_#Latn](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ti](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[om](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru_RU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ses_ML](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[saq_KE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sv_SE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bez](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_MR](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NU](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bg_BG](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gl](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gsw_CH](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lb_LU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[my](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SS](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[luo_KE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dua_CM](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_US](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tk](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[twq](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CK](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hsb_DE](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.LazySortedMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.LazySortedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ur_IN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pa_PK_#Arab](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lg_UG](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_HK](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tg](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_LU](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_AT](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yue](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pa_IN_#Guru](org.apache.commons.collections4.MapUtilsTest) (75 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_ZA](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kde](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_HK_#Hans](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testConstructors(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[az_AZ_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kok_IN](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testKeySetIteratorRemoveChangesMap(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sk_SK](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bn](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_PY](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dz_BT](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_JO](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gu_IN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ja_JP](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mgh](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sg_CF](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_PR](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz_AF_#Arab](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gsw](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_ES](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rn](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bo_IN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[om_ET](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_SV](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapSize(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_MX](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bs](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fi_FI](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_US_POSIX](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CH](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bas_CM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_UY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[te](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_KI](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[eo](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_PN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ca_ES](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ksf_CM](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[to_TO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[th_TH_TH_#u-nu-thai](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultMapEntryTest.testToString(org.apache.commons.collections4.keyvalue.DefaultMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ln_CF](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_PT](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hr_HR](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ii](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[et](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_PG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_CO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[or](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tr](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ii_CN](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[jgo](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.iterators.UnmodifiableOrderedMapIteratorTest.testMapIteratorOrder(org.apache.commons.collections4.iterators.UnmodifiableOrderedMapIteratorTest) (31 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[chr](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_KN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru_KZ](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dyo_SN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_FI](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_BA_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_QA](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bs__#Latn](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[wae_CH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CG](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mgo](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_IT](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mn](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[it_CH](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ml](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_DZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru_BY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_PF](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ug_CN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kam](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_AI](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SD](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[be_BY](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[se_NO](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CI](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_BR](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ak_GH](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[se](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ff](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gu](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MO](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vi_VN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[agq_CM](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testAccessorsAndMutators(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ff_GN](org.apache.commons.collections4.MapUtilsTest) (66 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bem](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BB](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_CS](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cy](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mas_KE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SH](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NF](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dav_KE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ig](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[af](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tt_RU](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_VE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ca](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_PS](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_SG](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uk_UA](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ji](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lu](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[my_MM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultMapEntryTest.testSelfReferenceHandling(org.apache.commons.collections4.keyvalue.DefaultMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ast](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_VG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hi_IN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bas](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MR](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh__#Hant](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vai_LR_#Vaii](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sah_RU](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_OM](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[is_IS](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sq_MK](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_LU](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_GP](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_BE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_HT](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz__#Arab](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[shi__#Tfng](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_VI](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dje_NE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testEntrySetContains1(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_GN](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_TD](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapRemove(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rm_CH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lkt_US](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ebu](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vun](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kab](org.apache.commons.collections4.MapUtilsTest) (76 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tt](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[chr_US](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mer](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ha](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_KE](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.map.TransformedMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.TransformedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nyn](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fur_IT](org.apache.commons.collections4.MapUtilsTest) (75 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ccp](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rw](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gl_ES](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yue__#Hans](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultMapEntryTest.testEqualsAndHashCode(org.apache.commons.collections4.keyvalue.DefaultMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MG](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mer_KE](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_GQ](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_AG](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ccp_BD](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hy](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ko](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ne](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[wae](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_LY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_IQ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_LU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz__#Cyrl](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fil_PH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[so](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[os_RU](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[eo_001](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_NI](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gsw_LI](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fo](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sn](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bem_ZM](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sq](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_RW](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nnh](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_ML](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_VC](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[iw](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru_UA](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_HK](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[luy_KE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_WF](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[shi](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_RS](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_DO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_CN_#Hans](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sw_TZ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sl](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[no_NO](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ee_TG](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultMapEntryTest.testAccessorsAndMutators(org.apache.commons.collections4.keyvalue.DefaultMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ta_IN](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BS](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nnh_CM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ksb_TZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BM](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fo_FO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ti_ET](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ccp_IN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[is](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tg_TJ](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tr_CY](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_PM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[af_NA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MQ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sw_KE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapToString(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_MA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dsb](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vo_001](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nb_SJ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_SO](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh__#Hans](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_GT](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_AR](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ast_ES](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ru_KG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_GA](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ja](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[it](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rwk](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lu_CD](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pl](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MC](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testEntrySetRetainAll(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_LR](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ti_ER](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[shi_MA_#Latn](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pl_PL](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ee_GH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_CH](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[om_KE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ckb](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_IE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MU](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_LS](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lv](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_CW](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fy](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_XK_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BZ](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SC](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ml_IN](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BI](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[xog](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vai__#Latn](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bez_TZ](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_SY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_SD](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vo](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[saq](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ja_JP_JP_#u-ca-japanese](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[it_VA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nus_SS](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ce](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mk_MK](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_IL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[el_GR](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lkt](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sg](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_GF](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz_UZ_#Cyrl](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ky_KG](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_IN](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[te_IN](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_VU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_US](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kab_DZ](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_SN](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ln_CD](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_IO](org.apache.commons.collections4.MapUtilsTest) (79 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mn_MN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[it_SM](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[or_IN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cu](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ps](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[twq_NE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_IM](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dsb_DE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_EA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ks_IN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_TG](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_419](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ksf](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[jgo_CM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[in](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_SX](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CD](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yo](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_FJ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pa__#Arab](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_FR](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ga](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cs](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sw_UG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ta](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_IL](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_KY](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ewo](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tk_TM](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_XK_#Latn](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bo_CN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_FK](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ses](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest.testAccessorsAndMutators(org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_ST](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[el_CY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ksh](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lo](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SB](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_ER](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lrc](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CM](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nds_NL](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_FM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SL](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.map.DefaultedMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.DefaultedMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dje](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz_UZ_#Latn](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sv](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ca_ES_VALENCIA](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mg](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_ME_#Latn](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yo_NG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gd](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_LC](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fur](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_BE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[brx_IN](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[si](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fil](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sw](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ln](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sk](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zu_ZA](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fi](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_NL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ms](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[seh](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nd_ZW](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mfe](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[dyo](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ta_SG](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lo_LA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[naq](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[az__#Cyrl](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mzn](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[so_ET](org.apache.commons.collections4.MapUtilsTest) (75 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cu_RU](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nds](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_SA](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tr_TR](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bn_BD](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mr](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[luo](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[da](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testEntrySetContains2(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lag](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MA](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_EC](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_YT](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_MO](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ta_LK](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_SY](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_YE](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fy_NL](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_PK](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[asa](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[uz__#Latn](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mr_IN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_HK_#Hant](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[as_IN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lrc_IR](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gd_GB](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.map.LazyMapTest.testEntrySetRemoveChangesMap(org.apache.commons.collections4.map.LazyMapTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_NE](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bo](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nn_NO](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ji_001](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[eu](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_CV](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rn_BI](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[af_ZA](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bm](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[luy](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_AU](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_NC](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_ER](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapContainsKey(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (12 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ne_IN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yue_HK_#Hant](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[th](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lg](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nl_SR](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sv_FI](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ckb_IR](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testValuesIteratorRemoveChangesMap(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[brx](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[th_TH](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_ME](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mgh_MZ](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ka_GE](org.apache.commons.collections4.MapUtilsTest) (77 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[wo](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[qu_BO](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_SC](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MG](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest.testConstructors(org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_UM](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sbp](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ro](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CA](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mt](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[haw](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rw_RW](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bg](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cy_GB](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_TW](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_GQ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testToMapEntry(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[os](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ps_AF](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ne_NP](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[jmc_TZ](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr__#Cyrl](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kln](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[br](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SI](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lag_TZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nds_DE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_PH](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.map.UnmodifiableOrderedMapTest.testMapEquals(org.apache.commons.collections4.map.UnmodifiableOrderedMapTest) (1 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zu](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ki_KE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CA](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[cgg](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_CU](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_CH](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kam_KE](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[vi](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ewo_CM](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[km_KH](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nmg_CM](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_HN](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_LB](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_DJ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mfe_MU](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fa](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nb](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bs__#Cyrl](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_MP](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ms_MY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[eu_ES](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zh_SG_#Hans](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[shi_MA_#Tfng](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mg_MG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ms_BN](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sn_ZW](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hy_AM](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CH](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lt](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_CL](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[no_NO_NY](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_CF](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ro_MD](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ky](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mzn_IR](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[prg](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ka](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fo_DK](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sv_AX](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_IC](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GY](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sr_BA](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[el](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[iw_IL](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[tzm](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_TN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest.testEqualsAndHashCode(org.apache.commons.collections4.keyvalue.UnmodifiableMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nd](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[seh_MZ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[teo](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[so_KE](org.apache.commons.collections4.MapUtilsTest) (78 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[yue__#Hant](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ln_CG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mt_MT](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[es_GQ](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[it_IT](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[xog_UG](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[am_ET](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_GU](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ksb](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nyn_UG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[br_FR](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[mk](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_SE](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_CC](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ha_NE](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_ZM](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[rm](org.apache.commons.collections4.MapUtilsTest) (75 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[gv](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[qu_PE](org.apache.commons.collections4.MapUtilsTest) (77 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_TN](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_BW](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[prg_001](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pa](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[si_LK](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_LI](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultMapEntryTest.testConstructors(org.apache.commons.collections4.keyvalue.DefaultMapEntryTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_JM](org.apache.commons.collections4.MapUtilsTest) (78 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kde_TZ](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ig_NG](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_VU](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ha_NG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NR](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[zgh](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fa_AF](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[se_SE](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[lv_LV](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[smn_FI](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[de_AT](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ca_AD](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nus](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nb_NO](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[hsb](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fr_MF](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_TV](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sd_PK](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_NG](org.apache.commons.collections4.MapUtilsTest) (71 ms)</li><li>org.apache.commons.collections4.keyvalue.DefaultKeyValueTest.testSelfReferenceHandling(org.apache.commons.collections4.keyvalue.DefaultKeyValueTest) (0 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_TK](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sah](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[so_DJ](org.apache.commons.collections4.MapUtilsTest) (73 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[en_AS](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_DJ](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[kw_GB](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[sd](org.apache.commons.collections4.MapUtilsTest) (69 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[pt_BR](org.apache.commons.collections4.MapUtilsTest) (74 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ar_SS](org.apache.commons.collections4.MapUtilsTest) (67 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[fa_IR](org.apache.commons.collections4.MapUtilsTest) (70 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[ms_SG](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[bs_BA_#Latn](org.apache.commons.collections4.MapUtilsTest) (72 ms)</li><li>org.apache.commons.collections4.MapUtilsTest.testPutAll_Map_array[nmg](org.apache.commons.collections4.MapUtilsTest) (68 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.4.6
+
+</body>
+</html>
