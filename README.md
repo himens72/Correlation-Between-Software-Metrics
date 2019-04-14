@@ -16,6 +16,25 @@ Here we perform various different coverage tests for developing test cases so th
 4. **Apache Commons Math** - [*project details*](http://commons.apache.org/proper/commons-math/) , [*source-code*](https://github.com/apache/commons-math)
 5. **JFreeChart** - [*project details*](http://www.jfree.org/jfreechart/) , [*source-code*](https://github.com/jfree/jfreechart)
 
+#### Directory layout
+    .
+    ├── Data                               # Metrics of various project (alternatively `dist`)
+    ├── DataAnalysisNoteBook               # jupyter notebook source Code     
+    ├── Project Source Code for Analysis   # latest version of project
+    ├── Docs                               # Documentation files (alternatively `doc`)
+    └── README.md
+    
+#### Prerequisites and Installation Steps for EclEmma (JaCoCo)
+1. Prerequisites : EclEmma requires Eclipse 3.8 or higher and Java 1.5 or higher. It has no dependencies on a particular operating system. Of course your Eclipse installation needs to contain the Java development tools (JDT) which is included in the default SDK installation.
+2. Installation Steps: 
+```
+    Step 1. From your Eclipse menu select Help → Eclipse Marketplace.
+    Step 2. Search for "EclEmma".
+    Step 3. Hit Install for the entry "EclEmma Java Code Coverage".
+    Step 4. Follow the steps in the installation wizard.
+```
+3. Verification : The installation was successful if you can see the coverage launcher in the toolbar of the Java perspective.
+
 #### Configuration for PIT Testing
 1. PIT requires Java 5 or above and either JUnit or TestNG to be on the classpath.
 2. Add the plugin to build/plugins in your pom.xml
@@ -50,3 +69,13 @@ Input Options :
                --csv  :  Write the results as comma separated values.
                --out=<file>  :  Synonym for --report-file=<file>.
 ```
+#### Team Member Details
+```
+1. Chetan Paliwal : chetanpaliwal22@gmail.com
+2. Himen Hitesh Sidhpura : himens72@gmail.com
+3. Sandeep Siddaramaiah : sandeepsiddaramaiah@gmail.com
+4. Karthik BP : karthikbeepi@gmail.com
+5. Rohan Paspallu : paspallu.rohan@gmail.com
+```
+
+
